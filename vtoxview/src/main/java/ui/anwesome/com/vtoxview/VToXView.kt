@@ -101,4 +101,26 @@ class VToXView(ctx : Context) : View(ctx) {
             state.startUpdating(startcb)
         }
     }
+
+    data class VToXRenderer(var view : VToXView) {
+
+        val animator : VToXAnimator = VToXAnimator(view)
+
+        val shape : VToXShape = VToXShape(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(Color.parseColor("#212121"))
+            shape.draw(canvas, paint)
+            animator.animate {
+                shape.update {
+                    animator.stop()
+                }
+            }
+        }
+        fun handleTap() {
+            shape.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
