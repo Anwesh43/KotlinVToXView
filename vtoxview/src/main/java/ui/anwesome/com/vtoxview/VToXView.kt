@@ -3,6 +3,7 @@ package ui.anwesome.com.vtoxview
 /**
  * Created by anweshmishra on 02/04/18.
  */
+import android.app.Activity
 import android.content.Context
 import android.graphics.*
 import android.view.*
@@ -25,7 +26,7 @@ class VToXView(ctx : Context) : View(ctx) {
         }
         return true
     }
-    
+
     data class VToXState(var prevScale : Float = 0f, var dir : Float = 0f, var j : Int = 0) {
 
         val scales : Array<Float> = arrayOf(0f, 0f, 0f)
@@ -124,6 +125,14 @@ class VToXView(ctx : Context) : View(ctx) {
             shape.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+        fun create(activity : Activity) : VToXView {
+            val view : VToXView = VToXView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
