@@ -91,8 +91,8 @@ class VToXView(ctx : Context) : View(ctx) {
             canvas.translate(w/2, h/2)
             for (i in 0..1) {
                 canvas.save()
-                canvas.translate((size/(2 * Math.sqrt(2.0).toFloat())) * (1 -state.scales[1]) * (1 - 2 * i), 0f)
-                canvas.rotate(45f * (1 - state.scales[0] + state.scales[2]) * (1 - 2 * i))
+                canvas.translate((size/4) * (1 -state.scales[1]) * (1 - 2 * i), 0f)
+                canvas.rotate((30f * (1 - state.scales[0]) + 45f * (state.scales[2])) * (1 - 2 * i))
                 canvas.drawLine(0f, -size/2,0f, size/2, paint)
                 canvas.restore()
             }
